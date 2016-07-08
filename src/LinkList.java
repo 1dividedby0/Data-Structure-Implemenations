@@ -1,12 +1,12 @@
 
-public class LinkList {
+public class LinkList<Element> {
 	
 	int iteration = 0;
-	Link start;
+	Link<Element> start;
 	
-	public void add(String str){
+	public void add(Element e){
 		
-		Link newLink = new Link(iteration, str);
+		Link<Element> newLink = new Link<Element>(iteration, e);
 		
 		iteration++;
 		
@@ -20,15 +20,15 @@ public class LinkList {
 		iteration = 0;
 	}
 	
-	public void addAt(int i, String str){
+	public void addAt(int i, Element e){
 		
 		// if the user is trying to add at the beginning
 		if(i == start.i){
-			add(str);
+			add(e);
 			return;
 		}
 		
-		Link current = start;
+		Link<Element> current = start;
 		// iterate over list
 		while(current != null){
 			// MATCH FOUND
@@ -38,9 +38,9 @@ public class LinkList {
 			current = current.next;
 		}
 		
-		Link newLink = new Link(i, str);
+		Link<Element> newLink = new Link<Element>(i, e);
 		
-		Link temp = current.next;
+		Link<Element> temp = current.next;
 		
 		// place the element in between
 		current.next = newLink;
@@ -49,7 +49,7 @@ public class LinkList {
 		// increment the next element for the while loop
 		current.i = i+1;
 		
-		Link cycler = start;
+		Link<Element> cycler = start;
 		
 		while(cycler.i != i && cycler.next.i != i){
 			cycler.i = cycler.i + 1;
@@ -58,8 +58,8 @@ public class LinkList {
 	}
 	
 	public void remove(int i){
-		Link current = start;
-		Link prev = start;
+		Link<Element> current = start;
+		Link<Element> prev = start;
 		
 		while(current != null){
 			if(current.i == i){
@@ -75,9 +75,9 @@ public class LinkList {
 	}
 	
 	public void print(){
-		Link current = start;
+		Link<Element> current = start;
 		while(current != null){
-			System.out.println(current.str + " has a " + current.i + " card.");
+			System.out.println(current.e + " has a " + current.i + " card.");
 			
 			current = current.next;
 			

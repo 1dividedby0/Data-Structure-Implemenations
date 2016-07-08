@@ -1,21 +1,21 @@
 
 
-public class Link{
+public class Link<Element>{
 	
 	public int i;
-	public String str;
+	public Element e;
 	
-	public Link next;
+	public Link<Element> next;
 	
-	public Link(int i, String str){
+	public Link(int i, Element e){
 		this.i = i;
-		this.str = str;
+		this.e = e;
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		LinkList list = new LinkList();
+		LinkList<String> list = new LinkList<String>();
 	
 		list.add("John");
 		list.add("Bob");
